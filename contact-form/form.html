@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Form | Conclude Example</title>
+  <link rel="stylesheet" href="form.css">
+</head>
+<body>
+<div class="container">
+  <form id="conclude-form" method="POST">
+    <h3>Conclude Contact Form</h3>
+    <div class="message-container">
+      <p id="status-message"></p>
+      <br>
+    </div>
+    <form-element>
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name">
+    </form-element>
+    <form-element>
+      <label for="email" class="req">Email</label>
+      <input type="email" name="email" id="email" required>
+    </form-element>
+    <form-element>
+      <label for="message" class="req">Message</label>
+      <textarea name="message" id="message" required></textarea>
+    </form-element>
+    <form-element class="center">
+      <button type="submit" name="submit-button" id="submit-button">Submit</button>
+    </form-element>
+    <input type="hidden" name="recaptcha" id="recaptcha">
+  </form>
+</div>
+</body>
+<!-- script src="https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key"></script-->
+<script src="https://conclude.app/js/activityform.js"></script>
+<script>
+  const connectorId = ''; // <-- set the web connector ID
+  const reCaptchaSiteKey = ''; // <-- set the reCAPTCHA site key
+  concludeForm.connect(connectorId, 'conclude-form', 'submit-button', reCaptchaSiteKey);
+</script>
+</html>

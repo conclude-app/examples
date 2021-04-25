@@ -1,0 +1,98 @@
+* {
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #ffffff;
+  color: #666;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.message-container {
+  text-align: center;
+}
+
+#conclude-form {
+  background: #f9f9f9;
+  padding: 25px;
+  margin: 75px 0;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+#conclude-form h3 {
+  display: block;
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+form-element {
+  display: inline-block;
+  font-size: 12px;
+  border: medium none !important;
+  margin: 0 0 10px;
+  min-width: 100%;
+  padding: 0;
+  width: 100%;
+}
+
+form-element-centered {
+  display: flex;
+  justify-content: center;
+  border: medium none !important;
+  margin: 0 0 10px;
+  min-width: 100%;
+  padding: 0;
+  width: 100%;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  background: #FFF;
+  margin: 5px 0 5px;
+  padding: 10px;
+}
+
+#conclude-form label {
+  font-weight: 400;
+  margin-top: 5px;
+  padding: 5px;
+}
+
+#conclude-form .req:after {
+  content:" *";
+  display: inline;
+  color: red;
+}
+
+#conclude-form textarea {
+  height: 100px;
+  max-width: 100%;
+  resize: none;
+}
+
+#conclude-form button[type="submit"] {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  background: #4CAF50;
+  color: #FFF;
+  margin: 10px 0 5px;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 600;
+}
