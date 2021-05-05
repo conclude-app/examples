@@ -3,7 +3,7 @@
     "type": "custom",
     "name": "approval",
     "label": "Generic approval",
-    "description": "Budget approval app",
+    "description": "Generic approval app",
     "attributes": [
         {
             "name": "title",
