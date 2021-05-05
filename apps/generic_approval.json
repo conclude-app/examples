@@ -1,0 +1,29 @@
+{
+    "author": "Conclude AS",
+    "type": "custom",
+    "name": "approval",
+    "label": "Generic approval",
+    "description": "Budget approval app",
+    "attributes": [
+        {
+            "name": "title",
+            "type": "string",
+            "label": "Way cool title",
+            "mandatory": true
+        },
+        {
+            "name": "conclusion",
+            "type": "text",
+            "label": "Conclusion"
+        }
+    ],
+    "launch_button": "New Topic",
+    "install": {
+        "steps": [
+            {
+                "setting": "superusers",
+                "description": "Who have the authority to make these approvals?"
+            }
+        ]
+    }
+}
