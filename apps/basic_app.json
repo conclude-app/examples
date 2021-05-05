@@ -16,7 +16,7 @@
             "name": "body",
             "type": "string",
             "label": "Details",
-            "placeholder": "Enter subject here",
+            "placeholder": "Enter subject here"
         },
         {
             "name": "conclusion",
