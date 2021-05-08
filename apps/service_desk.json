@@ -9,7 +9,7 @@
             "name": "title",
             "type": "string",
             "label": "Subject",
-            "placeholder": "What is you inquiry about?",
+            "placeholder": "What is your inquiry about?",
             "mandatory": true
         },
         {
