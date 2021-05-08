@@ -18,12 +18,34 @@
         }
     ],
     "launch_button": "New Topic",
-    "install": {
-        "steps": [
-            {
-                "setting": "superusers",
-                "description": "Who have the authority to make these approvals?"
-            }
-        ]
-    }
+    "install": [
+        {
+            "setting": "owner",
+            "description": "Who should be the owner of this app?"
+        },
+        {
+            "setting": "superusers",
+            "types": [
+                {
+                    "type": "user",
+                    "placeholder": "Select a user who can give approvals"
+                },
+                {
+                    "type": "channel",
+                    "placeholder": "Select a channel whose members can give approvals"
+                }
+            ],
+            "description": "Who have the authority to give these approvals?"
+        },
+        {
+            "setting": "members",
+            "types": [
+                {
+                    "type": "user",
+                    "placeholder": "Select the app participants"
+                }
+            ],
+            "description": "Who should be the participants?"
+        }
+    ]
 }
