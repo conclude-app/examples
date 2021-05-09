@@ -1,0 +1,66 @@
+author: Technology Dept
+type: custom
+name: bug-report
+label: Bug report
+description: Bug tracking
+enable_severity: true
+attributes:
+- name: title
+  type: string
+  label: Bug
+  placeholder: Brief summary
+  mandatory: true
+- name: conclusion
+  type: text
+  label: Resolution
+  default_value: '${bug_status.label}'
+  placeholder: What was the resolution?
+- name: bug_status
+  type: select
+  label: Status of the bug
+  visible: edit
+  default_value: new
+  options:
+    - name: new
+      label: Not yet confirmed
+    - name: incomplete
+      label: More information is required
+    - name: verified
+      label: The bug has been verified
+    - name: invalid
+      label: Not a bug
+    - name: in_progress
+      label: The bug is being fixed
+    - name: fixed
+      label: The bug was fixed
+    - name: wont_fix
+      label: The bug will not be fixed
+- name: severity
+  label: Priority
+  type: select
+  options:
+    - name: low
+      label: ':warning: Low'
+    - name: medium
+      label: ':exclamation: Medium'
+    - name: high
+      label: ':x: High'
+    - name: critical
+      label: ':fire: Critical'
+- name: body
+  type: text
+  label: Steps to reproduce
+  placeholder: Describe the environment and all steps to reproduce the bug
+- name: result
+  type: text
+  label: Expected vs actual result
+  placeholder: |-
+        What is the expected result?
+        What is the actual result?
+create_caption: New Bug Report
+install:
+  - setting: review.members
+    description: Select the members who should triage the bug
+  - setting: review.alert
+    description: >-
+      Select the audience who should be informed about an incoming bug for triage
