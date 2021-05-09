@@ -13,12 +13,6 @@
             "mandatory": true
         },
         {
-            "name": "body",
-            "type": "string",
-            "label": "Details",
-            "placeholder": "Enter subject here"
-        },
-        {
             "name": "conclusion",
             "type": "text",
             "label": "Conclusion",
