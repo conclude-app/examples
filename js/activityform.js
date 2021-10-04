@@ -10,12 +10,16 @@ function ActivityForm() {
     'rate_limit_error': 'Too many messages. Please try again.',
     'recaptcha_error': 'Recaptcha error.',
     'domain_error': 'Not a valid domain.',
-    'config_error': 'Internal configuration error.',
+    'config_error': 'Web connector configuration error.',
   };
 
   // Validate and post the form
-  this.createActivity = function(cid, form) {
-    let p = ['cid='+cid];
+  this.createActivity = function (cid, form) {
+    if (!cid) {
+      _that.showStatus('config_error');
+      return;
+    }
+    let p = ['cid=' + cid];
     for (let i = 0; i < form.elements.length; i++) {
       const e = form.elements[i];
       if (!e.checkValidity()) {
@@ -32,48 +36,49 @@ function ActivityForm() {
         'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
       },
       method: 'POST',
-      body: p.join('&')})
-    .then(resp => resp.json())
-    .then(res => {
-      if (res.error) {
-        throw(res);
-      }
-      if (res.status && res.status === 'ok') {
-        form.reset();
-      }
-      _that.showStatus(res.status);})
-    .catch(err => {
-      console.error('activity.form error: ', err);
-      _that.showStatus('internal_error');
-    });
+      body: p.join('&')
+    })
+      .then(resp => resp.json())
+      .then(res => {
+        if (res.error) {
+          throw(res);
+        }
+        if (res.status && res.status === 'ok') {
+          form.reset();
+        }
+        _that.showStatus(res.status);
+      })
+      .catch(err => {
+        console.error('activity.form error: ', err);
+        _that.showStatus('internal_error');
+      });
   };
 
   // Show a status text after the form has been submitted
-  this.showStatus = function(status) {
+  this.showStatus = function (status) {
     if (!status) {
       return;
     }
     document.getElementById('status-message').innerHTML =
-        _that.responses[status] ? _that.responses[status] : 'An unexpected error occurred.';
+      _that.responses[status] ? _that.responses[status] : 'An unexpected error occurred.';
     document.querySelector('.message-container').classList.add('active');
   };
 
   // Set alternative responses
-  this.setResponses = function(responses) {
+  this.setResponses = function (responses) {
     _that.responses = responses;
   }
 
   // Connect the submit button to our form action
-  this.connect = function(connId, formId, buttonId, reCASiteKey) {
+  this.connect = function (connId, formId, buttonId, reCASiteKey) {
     document.getElementById(buttonId).addEventListener('click', e => {
       e.preventDefault();
       if (reCASiteKey) {
-        grecaptcha.ready(function() {
-          grecaptcha.execute(reCASiteKey, {action: 'submit'}).
-              then(token => {
-                document.getElementById('recaptcha').value = token;
-                _that.createActivity(connId, document.getElementById(formId));
-              });
+        grecaptcha.ready(function () {
+          grecaptcha.execute(reCASiteKey, {action: 'submit'}).then(token => {
+            document.getElementById('recaptcha').value = token;
+            _that.createActivity(connId, document.getElementById(formId));
+          });
         });
       } else {
         _that.createActivity(connId, document.getElementById(formId));
